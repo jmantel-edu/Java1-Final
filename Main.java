@@ -1,7 +1,10 @@
 /**
  * Java 1 Final Project
  * By:
- * 
+ *  Jordan Mantel
+ *  Darsh Singh
+ *  Iremide Omoniyi
+ *  Yusuke Ho
  * 
  */
 
