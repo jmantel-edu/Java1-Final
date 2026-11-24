@@ -157,45 +157,44 @@ public class ClueBoard extends JPanel {
         }
 
         // Thick black outlines around rooms
-        g2.setStroke(new BasicStroke(3f));
-        g2.setColor(Color.BLACK);
+        g2.setStroke(new BasicStroke(3f)); // Make the drawing line thickness 3 pixels
+        g2.setColor(Color.BLACK); // Set the drawing color to black
         for (int r = 0; r < ROWS; r++) {
             for (int c = 0; c < COLS; c++) {
-                int x = c * TILE_SIZE;
-                int y = r * TILE_SIZE;
-                boolean isRoom = (board[r][c] == 1 || board[r][c] == 6);
+                int x = c * TILE_SIZE; // Calculate the x-coordinate of the tile based on its column index and tile size
+                int y = r * TILE_SIZE; // Calculate the y-coordinate of the tile based on its row index and tile size
+                boolean isRoom = (board[r][c] == 1 || board[r][c] == 6); // Check if the current tile is a room or a secret passage
 
                 if (isRoom) {
-                    if (r == 0 || (board[r - 1][c] != 1 && board[r - 1][c] != 6))
-                        g2.drawLine(x, y, x + TILE_SIZE, y);
-                    if (r == ROWS - 1 || (board[r + 1][c] != 1 && board[r + 1][c] != 6))
-                        g2.drawLine(x, y + TILE_SIZE, x + TILE_SIZE, y + TILE_SIZE);
-                    if (c == 0 || (board[r][c - 1] != 1 && board[r][c - 1] != 6))
-                        g2.drawLine(x, y, x, y + TILE_SIZE);
-                    if (c == COLS - 1 || (board[r][c + 1] != 1 && board[r][c + 1] != 6))
-                        g2.drawLine(x + TILE_SIZE, y, x + TILE_SIZE, y + TILE_SIZE);
+                    if (r == 0 || (board[r - 1][c] != 1 && board[r - 1][c] != 6)) // If the tile is in the first row or the tile above it is not a room or secret passage
+                        g2.drawLine(x, y, x + TILE_SIZE, y); // Draw the top border of the room tile
+                    if (r == ROWS - 1 || (board[r + 1][c] != 1 && board[r + 1][c] != 6)) // If the tile is in the last row or the tile below it is not a room or secret passage
+                        g2.drawLine(x, y + TILE_SIZE, x + TILE_SIZE, y + TILE_SIZE); // Draw the bottom border of the room tile
+                    if (c == 0 || (board[r][c - 1] != 1 && board[r][c - 1] != 6)) // If the tile is in the first column or the tile to its left is not a room or secret passage
+                        g2.drawLine(x, y, x, y + TILE_SIZE); // Draw the left border of the room tile
+                    if (c == COLS - 1 || (board[r][c + 1] != 1 && board[r][c + 1] != 6)) // If the tile is in the last column or the tile to its right is not a room or secret passage
+                        g2.drawLine(x + TILE_SIZE, y, x + TILE_SIZE, y + TILE_SIZE); // Draw the right border of the room tile
                 }
             }
         }
         g2.setStroke(new BasicStroke(1f));
 
         // Center "Clue" box
-        int clueX = 9 * TILE_SIZE;
-        int clueY = 8 * TILE_SIZE;
-        int clueW = 5 * TILE_SIZE;
-        int clueH = 7 * TILE_SIZE;
-        g2.setColor(wall);
-        g2.fillRect(clueX, clueY, clueW, clueH);
-        g2.setColor(Color.BLACK);
-        g2.drawRect(clueX, clueY, clueW, clueH);
+        int clueX = 9 * TILE_SIZE; // Sets the starting horizontal position 252 pixels from the left edge of the board (column 9)
+        int clueY = 8 * TILE_SIZE; // Sets the starting vertical position 252 pixels from the top edge of the board (row 8)
+        int clueW = 5 * TILE_SIZE; // Sets the width of the box to 140 pixels (5 tiles wide)
+        int clueH = 7 * TILE_SIZE; // Sets the height of the box to 196 pixels (7 tiles tall)
+        g2.setColor(wall); // Sets the color of the box to burnt-orange
+        g2.setColor(Color.BLACK); // Assign text color to black
+        g2.drawRect(clueX, clueY, clueW, clueH); // Repaints the box with the specified dimensions and color (Not needed)
 
-        g2.setFont(new Font("Serif", Font.BOLD, 34));
-        g2.drawString("\"Clue\"", clueX + 22, clueY + 135);
+        g2.setFont(new Font("Serif", Font.BOLD, 34)); // Changes the text style to a bold Serif font at size 34
+        g2.drawString("\"Clue\"", clueX + 22, clueY + 135); // Draws the text "Clue" inside the box, positioned 22 pixels to the right and 135 pixels down from the top-left corner of the box
 
         // Room labels
         g2.setColor(Color.BLACK);
         g2.setFont(new Font("Arial", Font.BOLD, 12));
-        g2.drawString("STUDY", 2 * TILE_SIZE + 10, 2 * TILE_SIZE + 15);
+        g2.drawString("STUDY", 2 * TILE_SIZE + 10, 2 * TILE_SIZE + 15); // (Text, x-position(Col), y-position(Row))
         g2.drawString("HALL", 11 * TILE_SIZE + 5, 3 * TILE_SIZE + 20);
         g2.drawString("LOUNGE", 19 * TILE_SIZE + 5, 3 * TILE_SIZE + 15);
         g2.drawString("LIBRARY", 1 * TILE_SIZE + 15, 9 * TILE_SIZE);
@@ -207,7 +206,7 @@ public class ClueBoard extends JPanel {
 
         // Start labels
         g2.setFont(new Font("Arial", Font.BOLD, 7));
-        g2.drawString("START", 16 * TILE_SIZE + 2, 14);
+        g2.drawString("START", 16 * TILE_SIZE + 2, 14); // (Text, x-position(Col), y-position(Row))
         g2.drawString("START", 23 * TILE_SIZE + 2, 7 * TILE_SIZE + 16);
         g2.drawString("START", 14 * TILE_SIZE + 2, 24 * TILE_SIZE + 16);
         g2.drawString("START", 9 * TILE_SIZE + 2, 24 * TILE_SIZE + 16);
