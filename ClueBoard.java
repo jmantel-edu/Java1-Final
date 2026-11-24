@@ -73,13 +73,13 @@ public class ClueBoard extends JPanel {
         // Doors
         int[][] doors = {
             {4, 6},
-            {4, 8}, {7, 11}, {7, 12},
+            {7, 12},
             {6, 17},
-            {8, 7}, {11, 3},
-            {11, 1}, {15, 6},
+            {8, 7}, 
+            {11, 2}, {15, 6},
             {18, 4},
-            {16, 9}, {16, 14}, {19, 7}, {19, 16},
-            {17, 19},
+            {16, 10}, {16, 13}, {18, 7}, {18, 16},
+            {17, 18},
             {8, 17}, {12, 15}
         };
         for (int[] d : doors) {
@@ -89,6 +89,7 @@ public class ClueBoard extends JPanel {
         // Start squares
         int[][] starts = {
             {0, 16}, {7, 23}, {24, 14}, {24, 9}, {18, 0}, {5, 0}
+           //red    //yellow  //white  //green   //blue   //purple
         };
         for (int[] s : starts) {
             board[s[0]][s[1]] = 5;
